@@ -17,12 +17,12 @@
         <img src="joey.jpg" id="myImage" alt="">
     </main>
 
-    <script src="../libraries/face-api/dist/face-api.js"></script>
+    <script src="../../libraries/face-api/dist/face-api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
     <script>
         async function make() {
 
-            const MODEL_URL = '../libraries/face-api/weights/';
+            const MODEL_URL = '../../libraries/face-api/weights/';
 
             await faceapi.loadSsdMobilenetv1Model(MODEL_URL)
             await faceapi.loadFaceLandmarkModel(MODEL_URL)
