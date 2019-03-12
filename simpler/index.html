@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>face-api image example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="code lh-copy w-100 h-100">
+    <main class="w-100 h-100 flex flex-row items-center justify-center">
+        <div class="w-100 mw6 pa3">
+            <h1>Hi! I'm Joey.</h1>
+            <ul id="labels"></ul>
+        </div>
+        <img src="joey.jpg" id="myImage" alt="">
+    </main>
+
+    <script src="../libraries/face-api/dist/face-api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script>
+        async function make() {
+
+            const MODEL_URL = '../libraries/face-api/weights/';
+
+            await faceapi.loadSsdMobilenetv1Model(MODEL_URL)
+            await faceapi.loadFaceLandmarkModel(MODEL_URL)
+            await faceapi.loadFaceRecognitionModel(MODEL_URL)
+            await faceapi.loadFaceExpressionModel(MODEL_URL)
+            console.log(faceapi);
+
+            const input = document.getElementById('myImage')
+            // let fullFaceDescriptions = await faceapi.detectAllFaces(input).withFaceLandmarks().withFaceDescriptors()
+            const detectionsWithExpressions = await faceapi.detectAllFaces(input).withFaceExpressions()
+            console.log(detectionsWithExpressions)
+            let expressions = detectionsWithExpressions[0].expressions
+            let labels = document.querySelector("#labels");
+
+            for (let p in expressions) {
+                let item = expressions[p];
+                let feelings = `<li>${item.probability.toFixed(5) * 100.0}% ${item.expression} </li>`
+                labels.innerHTML += feelings;
+            }
+
+        }
+        make();
+    </script>
+</body>
+
+</html>
