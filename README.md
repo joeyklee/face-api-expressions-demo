@@ -3,6 +3,7 @@
 
 * See: [/simpler](/simpler) for a simpler demo
 * See: [/simple](/simple) for a demo pulling out the highest probability facial expression.
+* See: [/webcam](/webcam) for a demo using the webcam to display in real-time the facial expressions.
 
 ## References:
 * [https://github.com/justadudewhohacks/face-api.js](https://github.com/justadudewhohacks/face-api.js)
