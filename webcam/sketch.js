@@ -12,7 +12,6 @@ let div;
 // }
 
 function setup() {
-    console.log(faceapi)
     textAlign(RIGHT);
     div = createDiv('<br> please wait while face-api models are loading...');
     
@@ -45,7 +44,7 @@ function draw() {
     // console.log(expression)
     if(expression){
         if(expression.length > 0){
-            
+
         const {expressions} = expression[0]
         // div.elt.innerHTML = '';
         expressions.forEach( (item, idx) => {
