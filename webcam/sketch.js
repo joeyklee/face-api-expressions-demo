@@ -42,7 +42,10 @@ async function getExpression(){
 function draw() {
     background(0)
     // image(vid,0,0)
+    // console.log(expression)
     if(expression){
+        if(expression.length > 0){
+            
         const {expressions} = expression[0]
         // div.elt.innerHTML = '';
         expressions.forEach( (item, idx) => {
@@ -55,5 +58,7 @@ function draw() {
             rect(80, idx*20 +10 , val, 15)
             // div.elt.innerHTML += `${expression}: ${probability} <br>`
         })
+        }
+        
     }
 }
